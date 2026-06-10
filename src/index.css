@@ -1,0 +1,1262 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --primary: #7d170d;
+  --primary-hover: #63120a;
+
+  --secondary: #b55a4f;
+
+  --background: #faf8f6;
+  --surface: #ffffff;
+
+  --text-primary: #2f2a28;
+  --text-secondary: #6f6661;
+
+  --border: #e7ddd7;
+
+  --footer: #3d0b06;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background);
+  /* Fondo exacto de tus capturas */
+  background-image:
+    linear-gradient(rgba(253, 252, 249, 0.85), rgba(253, 252, 249, 0.85)),
+    url("https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop");
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+/* Botón estilo píldora de tus fotos */
+/* .btn-pill {
+  background-color: var(--primary-brown);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+} */
+.btn-pill {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-pill:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+/* Estilo para los inputs de texto y áreas de texto */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #c2b9ad;
+  border-radius: 12px; /* Bordes más redondeados como en la foto */
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #4a3b32;
+  background-color: #ffffff;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #8c6d58;
+  box-shadow: 0 0 0 3px rgba(140, 109, 88, 0.1);
+}
+
+/* Estilo para el área de selección de archivo */
+.file-upload-wrapper {
+  border: 1px solid #c2b9ad;
+  padding: 8px 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  cursor: pointer;
+}
+
+.file-upload-wrapper:hover {
+  border-color: #8c6d58;
+}
+
+/* Contenedor con imagen de fondo */
+.checkout-main-wrapper {
+  /* REEMPLAZA LA URL CON TU IMAGEN REAL */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+    url("https://tu-sitio.com/ruta-a-tu-imagen.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.back-button-container {
+  max-width: 850px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.btn-back {
+  background: white;
+  border: 1px solid #dcd8d0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #4a3b32;
+  font-size: 14px;
+}
+
+/* Tarjeta de Checkout con transparencia suave */
+.checkout-card-main {
+  max-width: 850px;
+  width: 100%;
+  display: flex;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* Un poco de transparencia para el fondo */
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(240, 237, 233, 0.8);
+}
+
+/* Lado Izquierdo */
+.summary-section {
+  flex: 1;
+  background: rgba(249, 246, 241, 0.8);
+  padding: 50px 45px;
+}
+
+.text-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.plan-title {
+  font-family:
+    "Playfair Display", serif; /* Fuente elegante como en la captura */
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.price-tag {
+  font-size: 26px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.plan-description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Lado Derecho */
+.payment-section {
+  flex: 1.1;
+  padding: 50px 45px;
+  background: white;
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-custom {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #dcd8d0;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.input-custom:focus {
+  border-color: #c18669;
+}
+
+.card-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.card-input-box input {
+  padding-right: 120px; /* Espacio para los iconos */
+  width: 100%;
+}
+
+.card-icons-right {
+  position: absolute;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.expiry-cvc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.expiry-combo {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dcd8d0;
+  border-radius: 12px;
+  padding: 0 10px;
+}
+
+.select-clean {
+  border: none;
+  background: transparent;
+  padding: 14px 5px;
+  width: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-confirm {
+  margin-top: 10px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-confirm:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.secure-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* ---------agenda alumnos --------- */
+
+/* .agenda-premium-wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: "Inter", sans-serif;
+  background: var(--surface);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+} */
+.agenda-premium-wrapper {
+  /* Reducimos el ancho máximo para que sea más compacto */
+  max-width: 650px;
+  /* Ajustamos el margen para que no esté tan abajo ni tan arriba */
+  margin: 60px auto;
+  /* Reducimos el padding interno para que los elementos no tengan tanto aire */
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  background: var(--surface);
+  border-radius: 20px; /* Bordes un poco menos redondeados para el tamaño nuevo */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  /* Quitamos el min-height excesivo para que la caja se adapte al contenido */
+  min-height: auto;
+}
+/* Header */
+
+.agenda-header {
+  text-align: center;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.agenda-header h1 {
+  font-family: "Playfair Display", serif;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+}
+
+.agenda-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  background: white;
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: var(--background);
+  color: var(--primary);
+}
+
+/* Lista de Horarios */
+/* Contenedor de Horarios en Rejilla */
+.horarios-grid {
+  display: grid;
+  /* Crea columnas automáticas de mínimo 140px. 
+     Se ajusta solo: 2 columnas en móvil, 3 o 4 en desktop. */
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Tarjeta en formato Cuadro */
+.horario-card {
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column; /* Alineación vertical para el cuadro */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.horario-card:hover:not(.disabled) {
+  transform: translateY(-4px);
+  border-color: var(--secondary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.horario-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--background);
+}
+
+/* Ajustes de tipografía para el cuadro */
+.time {
+  font-size: 1.2rem; /* Un poco más chico para el cuadro */
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.coach-info {
+  display: flex;
+  flex-direction: column; /* Coach arriba, badge abajo */
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge {
+  margin-top: 8px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+/* Mapa de Camas */
+
+.mapa-estudio-container {
+  text-align: center;
+}
+
+.estudio-layout {
+  background: var(--background);
+  padding: 40px 30px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  border: 1px solid var(--border);
+}
+
+.espejo-indicador {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+}
+
+.grid-reformers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.reformer-unit {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.reformer-shape {
+  background: white;
+  width: 100%;
+  height: 100px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  border: 2px solid transparent;
+  color: var(--border);
+  font-size: 2rem;
+  position: relative;
+}
+
+.num {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-top: 5px;
+}
+
+.reformer-unit.selected .reformer-shape {
+  border-color: var(--secondary);
+  background: white;
+  color: var(--secondary);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(181, 90, 79, 0.15);
+}
+
+.reformer-unit.selected .num {
+  color: var(--primary);
+}
+
+.reformer-unit.occupied .reformer-shape {
+  background: #f1f1f1;
+  color: #ddd;
+  box-shadow: none;
+}
+
+.reformer-unit .label {
+  display: block;
+  font-size: 0.7rem;
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Botón de Acción (Usando tu clase btn-pill) */
+
+.confirm-reserva-btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 50px;
+  border: none;
+  background: #dcd8d0;
+  color: white;
+  font-weight: 600;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.confirm-reserva-btn.active {
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(125, 23, 13, 0.3);
+}
+
+.confirm-reserva-btn.active:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* Success Card */
+
+/* Success Card Compacta (Estilo Alea Method) */
+/* Contenedor que envuelve la tarjeta de éxito (Centrado Absoluto) */
+.reserva-success-overlay {
+  display: flex;
+  justify-content: center; /* Centrado horizontal real */
+  align-items: center; /* Centrado vertical real */
+  min-height: 70vh; /* Le da suficiente espacio vertical para que flote al centro de la imagen */
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Success Card Compacta y Centrada */
+.success-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra suave como en tu captura */
+
+  /* Corregido el nombre de la dirección de animación para evitar conflictos de transform */
+  animation: fadeInCompact 0.4s ease-out forwards;
+}
+
+.success-card h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin: 12px 0 6px 0;
+}
+
+.success-card p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+/* El recuadro de los datos de la reserva (Clase y Cama) */
+.ticket-summary {
+  margin: 15px auto 0 auto;
+  background: var(--background);
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px dashed var(--secondary);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  max-width: 320px;
+}
+
+/* --- CONTENEDOR DEL CALENDARIO --- */
+.calendar-nav-container {
+  background: #ffffff;
+  padding: 15px 5px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.calendar-month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.month-name {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+/* BOTONES DE NAVEGACIÓN */
+.nav-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  background: #f8f8f8;
+  border: 1px solid #eeeeee;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: white;
+  border-color: var(--secondary);
+  color: var(--secondary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* FILA DE DÍAS */
+.days-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 días: Lun a Sáb */
+  gap: 10px;
+}
+
+.day-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  border-radius: 16px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+/* ESTADO SELECCIONADO (Active) */
+.day-item.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.day-item.active .day-label,
+.day-item.active .day-number {
+  color: white;
+}
+
+/* TIPOGRAFÍA DENTRO DEL DÍA */
+.day-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #a0a0a0; /* Gris suave para los días no seleccionados */
+  margin-bottom: 4px;
+}
+
+.day-number {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* INDICADOR DE "HOY" (Puntito) */
+.day-item.today:not(.active) {
+  border: 1px solid var(--border);
+}
+
+.today-dot {
+  position: absolute;
+  bottom: 6px;
+  width: 4px;
+  height: 4px;
+  background: var(--secondary);
+  border-radius: 50%;
+}
+
+.day-item.active .today-dot {
+  background: white;
+}
+
+/* EFECTO HOVER PARA DÍAS NO SELECCIONADOS */
+.day-item:hover:not(.active) {
+  background: #fdfdfd;
+  border-color: #eee;
+}
+
+/* ----------planes alumnos------------------ */
+
+.planes-container {
+  max-width: 1000px; /* Un poco más ancho para que quepan las 3 tarjetas */
+  margin: 60px auto;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.planes-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.planes-header h1 {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 24px;
+  padding: 40px 30px;
+  position: relative;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el plan resaltado */
+.pricing-card.featured {
+  border: 2px solid var(--primary); /* Usa tu color primario */
+  transform: scale(1.05);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.badge-recomendado {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.price-box {
+  margin: 20px 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.amount {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.currency,
+.period {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0 4px;
+}
+
+.clases-label {
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.beneficios-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+  flex-grow: 1; /* Empuja el botón hacia abajo */
+}
+
+.beneficios-list li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.check-icon {
+  color: #c4a484;
+  margin-right: 12px;
+  font-size: 0.9rem;
+}
+
+.btn-elegir-plan {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pricing-card.featured .btn-elegir-plan {
+  background: var(--primary);
+}
+
+.btn-elegir-plan:hover {
+  opacity: 0.9;
+}
+
+/* --------------mis clases------------------- */
+/* --- CONTENEDOR PRINCIPAL --- */
+.mis-clases-container {
+  padding: 80px 20px;
+  min-height: 80vh;
+  /* El fondo ya lo hereda del body en tu global.css, 
+     pero mantenemos el padding para el espaciado */
+}
+
+/* --- ENCABEZADO --- */
+.header-clases {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.header-clases h1 {
+  font-family: "Playfair Display", serif;
+  color: var(--text-primary);
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.header-clases p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- GRID DE TARJETAS --- */
+.clases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- TARJETA DE CLASE (PREMIUM) --- */
+.clase-card-premium {
+  background: var(--surface);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.clase-card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--secondary);
+}
+
+.clase-card-inner {
+  padding: 35px;
+}
+
+/* --- STATUS Y ACCIONES --- */
+.card-top-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.status-label {
+  background: var(--background);
+  color: var(--text-primary);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-delete-session {
+  background: transparent;
+  border: none;
+  color: #c4c4c4;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.btn-delete-session:hover {
+  color: var(--primary); /* Cambia a tu rojo de marca al hacer hover */
+}
+
+/* --- CONTENIDO DE LA TARJETA --- */
+.session-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+}
+
+.session-divider {
+  height: 1px;
+  background: radial-gradient(
+    circle,
+    var(--border) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  margin-bottom: 25px;
+}
+
+.session-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.session-icon {
+  color: var(--secondary);
+  font-size: 1.2rem;
+}
+
+.detail-item label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.detail-item span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* --- ESTADO VACÍO --- */
+.empty-state-boutique {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 40px;
+  background: var(--surface);
+  border-radius: 30px;
+  border: 2px dashed var(--border);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.empty-state-boutique h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.empty-state-boutique p {
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+.tabla-reservas-wrapper {
+  max-width: 70vw;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow-x: auto; /* Para móviles */
+}
+
+.tabla-boutique {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabla-boutique th {
+  padding: 18px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--background);
+}
+
+.tabla-boutique td {
+  padding: 20px 18px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--background);
+}
+
+.tabla-boutique tr:last-child td {
+  border-bottom: none;
+}
+
+.clase-name {
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+}
+
+.coach-name {
+  font-weight: 500;
+  color: var(--secondary);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0fdf4;
+  color: #166534;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.btn-cancel-icon {
+  background: none;
+  border: none;
+  color: #d1d5db;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.btn-cancel-icon:hover {
+  color: var(--primary);
+}
+
+/* Efecto Hover en la fila */
+.tabla-boutique tr:hover td {
+  background-color: #fafaf9;
+}
+
+/* Layout Principal - Esto divide la pantalla en 2 columnas */
+.dashboard-layout {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #faf8f6;
+  min-height: 100vh;
+}
+
+/* Sidebar Izquierdo */
+.sidebar-cuenta {
+  width: 280px;
+  background: white;
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avatar-circle {
+  width: 70px;
+  height: 70px;
+  background: #2c3e50;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto 10px;
+}
+
+.menu-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-sidebar button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  border: none;
+  background: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.menu-sidebar button.active,
+.menu-sidebar button:hover {
+  background: #f0f4f8;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+/* Contenido Derecho */
+.main-content-dashboard {
+  flex: 1; /* Esto hace que tome el resto del espacio */
+}
+
+.section-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+/* Ajustes de las tablas para que se vean Boutique */
+.tabla-reservas-wrapper {
+  background: white;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.status-pill.activo {
+  background: #e6f7ff;
+  color: #1890ff;
+}
+.status-pill.completado {
+  background: #f6ffed;
+  color: #52c41a;
+}
+.status-pill.active {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+/* Contenedor de la información del perfil */
+.profile-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+/* Grupos de etiqueta y dato */
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 10px;
+}
+
+.info-group label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #94a3b8; /* Un gris suave para etiquetas */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.info-group p {
+  font-size: 0.95rem;
+  color: #1e293b; /* Azul muy oscuro para los datos */
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Badge de estado debajo del título */
+.status-badge {
+  font-size: 0.8rem;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.sidebar-cuenta hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 10px 0;
+}
+
+/* Animación limpia que no rompe el centrado de Flexbox */
+@keyframes fadeInCompact {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
