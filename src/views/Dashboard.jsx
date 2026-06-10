@@ -19,13 +19,13 @@ const Dashboard = () => {
   const [editandoId, setEditandoId] = useState(null);
 
   // ESTADOS DE DISCIPLINAS
-  // const [disciplinas, setDisciplinas] = useState([]);
-  // const [discNombre, setDiscNombre] = useState("");
-  // const [discDescCorta, setDiscDescCorta] = useState("");
-  // const [discDetalles, setDiscDetalles] = useState("");
-  // const [discBeneficios, setDiscBeneficios] = useState("");
-  // const [discImg, setDiscImg] = useState("");
-  // const [editandoDiscId, setEditandoDiscId] = useState(null);
+  const [disciplinas, setDisciplinas] = useState([]);
+  const [discNombre, setDiscNombre] = useState("");
+  const [discDescCorta, setDiscDescCorta] = useState("");
+  const [discDetalles, setDiscDetalles] = useState("");
+  const [discBeneficios, setDiscBeneficios] = useState("");
+  const [discImg, setDiscImg] = useState("");
+  const [editandoDiscId, setEditandoDiscId] = useState(null);
 
   // --- ESTADOS DE COACHES ---
   const [coaches, setCoaches] = useState([]);
@@ -53,9 +53,9 @@ const Dashboard = () => {
       JSON.parse(localStorage.getItem("mis_coaches")) || [];
     setCoaches(guardadosCoaches);
 
-    // const guardadasDisc =
-    //   JSON.parse(localStorage.getItem("mis_disciplinas")) || [];
-    // setDisciplinas(guardadasDisc);
+    const guardadasDisc =
+      JSON.parse(localStorage.getItem("mis_disciplinas")) || [];
+    setDisciplinas(guardadasDisc);
 
     // Cargar horarios asignados (estos se leerán desde Reservas también)
     const guardadasClases =
@@ -152,55 +152,55 @@ const Dashboard = () => {
   };
 
   // --- LÓGICA DE DISCIPLINAS ---
-  // const handleGuardarDisciplina = () => {
-  //   if (!discNombre || !discDescCorta || !discImg)
-  //     return alert("Completa el título, descripción corta e imagen");
+  const handleGuardarDisciplina = () => {
+    if (!discNombre || !discDescCorta || !discImg)
+      return alert("Completa el título, descripción corta e imagen");
 
-  //   const nuevaDisc = {
-  //     id: editandoDiscId || Date.now(),
-  //     nombre: discNombre,
-  //     descCorta: discDescCorta,
-  //     detalles: discDetalles,
-  //     img: discImg,
-  //     beneficios: discBeneficios
-  //       .split(",")
-  //       .map((b) => b.trim())
-  //       .filter((b) => b !== ""),
-  //   };
+    const nuevaDisc = {
+      id: editandoDiscId || Date.now(),
+      nombre: discNombre,
+      descCorta: discDescCorta,
+      detalles: discDetalles,
+      img: discImg,
+      beneficios: discBeneficios
+        .split(",")
+        .map((b) => b.trim())
+        .filter((b) => b !== ""),
+    };
 
-  //   const nuevaLista = editandoDiscId
-  //     ? disciplinas.map((d) => (d.id === editandoDiscId ? nuevaDisc : d))
-  //     : [...disciplinas, nuevaDisc];
+    const nuevaLista = editandoDiscId
+      ? disciplinas.map((d) => (d.id === editandoDiscId ? nuevaDisc : d))
+      : [...disciplinas, nuevaDisc];
 
-  //   setDisciplinas(nuevaLista);
-  //   localStorage.setItem("mis_disciplinas", JSON.stringify(nuevaLista));
+    setDisciplinas(nuevaLista);
+    localStorage.setItem("mis_disciplinas", JSON.stringify(nuevaLista));
 
-  //   setDiscNombre("");
-  //   setDiscDescCorta("");
-  //   setDiscDetalles("");
-  //   setDiscBeneficios("");
-  //   setDiscImg("");
-  //   setEditandoDiscId(null);
-  //   alert("¡Disciplina actualizada!");
-  // };
+    setDiscNombre("");
+    setDiscDescCorta("");
+    setDiscDetalles("");
+    setDiscBeneficios("");
+    setDiscImg("");
+    setEditandoDiscId(null);
+    alert("¡Disciplina actualizada!");
+  };
 
-  // const eliminarDisciplina = (id) => {
-  //   if (window.confirm("¿Eliminar esta disciplina?")) {
-  //     const filtrados = disciplinas.filter((d) => d.id !== id);
-  //     setDisciplinas(filtrados);
-  //     localStorage.setItem("mis_disciplinas", JSON.stringify(filtrados));
-  //   }
-  // };
+  const eliminarDisciplina = (id) => {
+    if (window.confirm("¿Eliminar esta disciplina?")) {
+      const filtrados = disciplinas.filter((d) => d.id !== id);
+      setDisciplinas(filtrados);
+      localStorage.setItem("mis_disciplinas", JSON.stringify(filtrados));
+    }
+  };
 
-  // const prepararEdicionDisc = (d) => {
-  //   setEditandoDiscId(d.id);
-  //   setDiscNombre(d.nombre);
-  //   setDiscDescCorta(d.descCorta);
-  //   setDiscDetalles(d.detalles);
-  //   setDiscBeneficios(d.beneficios.join(", "));
-  //   setDiscImg(d.img || "");
-  //   window.scrollTo({ top: 0, behavior: "smooth" });
-  // };
+  const prepararEdicionDisc = (d) => {
+    setEditandoDiscId(d.id);
+    setDiscNombre(d.nombre);
+    setDiscDescCorta(d.descCorta);
+    setDiscDetalles(d.detalles);
+    setDiscBeneficios(d.beneficios.join(", "));
+    setDiscImg(d.img || "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   // --- LÓGICA DE COACHES ---
   const handleGuardarCoach = () => {
@@ -376,11 +376,11 @@ const Dashboard = () => {
             label="Precios"
             onClick={() => setVistaActiva("precios")}
           />
-          {/* <SidebarItem
+          <SidebarItem
             active={vistaActiva === "disciplinas"}
             label="Disciplinas"
             onClick={() => setVistaActiva("disciplinas")}
-          /> */}
+          />
           <SidebarItem
             active={vistaActiva === "coaches"}
             label="Gestión de Coaches"
@@ -621,7 +621,7 @@ const Dashboard = () => {
         )}
 
         {/* VISTA DISCIPLINAS */}
-        {/* {vistaActiva === "disciplinas" && (
+        {vistaActiva === "disciplinas" && (
           <>
             <h2
               style={{
@@ -821,7 +821,7 @@ const Dashboard = () => {
               </table>
             </div>
           </>
-        )} */}
+        )}
 
         {/* VISTA COACHES */}
         {vistaActiva === "coaches" && (

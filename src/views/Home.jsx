@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className="home-wrapper">
       {/* 1. HERO SECTION */}
-      <header
+      {/* <header
         id="inicio"
         style={{
           textAlign: "center",
@@ -23,11 +23,18 @@ const Home = () => {
           maxWidth: "900px",
           margin: "0 auto",
         }}
+      > */}
+      <header
+        id="inicio"
+        className="container text-center py-5"
+        style={{
+          maxWidth: "900px",
+        }}
       >
         <h1
           style={{
             fontFamily: "Playfair Display",
-            fontSize: "64px",
+            fontSize: "clamp(2.5rem, 6vw, 4rem)",
             marginBottom: "20px",
             color: "var(--text-primary)",
             lineHeight: "1.1",
@@ -64,7 +71,7 @@ const Home = () => {
           Explorar Disciplinas
         </button>
 
-        <div
+        {/* <div
           style={{
             display: "flex",
             justifyContent: "center",
@@ -79,11 +86,88 @@ const Home = () => {
           />
           <Benefit icon="📏" title="Postura" text="Alineación corporal" />
           <Benefit icon="✨" title="Vitalidad" text="Energía para tu día" />
+        </div> */}
+        <div className="row justify-content-center mt-5 g-4">
+          <div className="col-12 col-md-4">
+            <Benefit
+              icon="🌿"
+              title="Paz Mental"
+              text="Reduce el estrés diario"
+            />
+          </div>
+
+          <div className="col-12 col-md-4">
+            <Benefit icon="📏" title="Postura" text="Alineación corporal" />
+          </div>
+
+          <div className="col-12 col-md-4">
+            <Benefit icon="✨" title="Vitalidad" text="Energía para tu día" />
+          </div>
         </div>
       </header>
 
       {/* 2. SOBRE NOSOTROS */}
       <section
+        className="py-5"
+        style={{
+          background: "var(--surface)",
+        }}
+      >
+        <div className="container">
+          <div className="row align-items-center g-5">
+            <div className="col-12 col-lg-6">
+              <img
+                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1000&auto=format&fit=crop"
+                alt="Studio"
+                style={{
+                  width: "100%",
+                  borderRadius: "30px",
+                  boxShadow: "20px 20px 0px #ead7cf",
+                }}
+              />
+            </div>
+
+            <div className="col-12 col-lg-6">
+              <h2
+                style={{
+                  fontFamily: "Playfair Display",
+                  fontSize: "42px",
+                  color: "var(--text-primary)",
+                  marginBottom: "25px",
+                }}
+              >
+                Tu bienestar es nuestra prioridad.
+              </h2>
+
+              <p
+                style={{
+                  color: "var(--text-secondary)",
+                  fontSize: "17px",
+                  lineHeight: "1.8",
+                  marginBottom: "30px",
+                }}
+              >
+                En Mente y Cuerpo Pilates, creemos que el movimiento es
+                medicina. Nuestras sesiones están diseñadas para fortalecer no
+                solo tus músculos, sino también tu conexión interna.
+              </p>
+
+              <div
+                style={{
+                  borderLeft: "4px solid var(--primary)",
+                  paddingLeft: "20px",
+                  fontStyle: "italic",
+                  color: "var(--secondary)",
+                }}
+              >
+                "La salud es un estado normal de la mente y el cuerpo." - Joseph
+                Pilates
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* <section
         style={{
           display: "flex",
           padding: "100px 50px",
@@ -138,10 +222,10 @@ const Home = () => {
             Pilates
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 3. SECCIÓN DE CLASES (DINÁMICA DESDE ADMIN) */}
-      <section
+      {/* <section
         id="clases"
         style={{
           padding: "100px 50px",
@@ -182,10 +266,148 @@ const Home = () => {
             <p>No hay disciplinas disponibles por ahora.</p>
           )}
         </div>
+      </section> */}
+      <section
+        id="clases"
+        className="py-5"
+        style={{
+          background: "var(--background)",
+        }}
+      >
+        <div className="container text-center">
+          <h2
+            style={{
+              fontFamily: "Playfair Display",
+              fontSize: "40px",
+              marginBottom: "15px",
+              color: "var(--text-primary)",
+            }}
+          >
+            Nuestras Disciplinas
+          </h2>
+
+          <div className="row g-4 mt-5">
+            {disciplinasDinamicas.length > 0 ? (
+              disciplinasDinamicas.map((disciplina) => (
+                <div key={disciplina.id} className="col-12 col-md-6 col-lg-4">
+                  <ClassCard
+                    img={disciplina.img}
+                    title={disciplina.nombre}
+                    desc={disciplina.descCorta}
+                    onOpen={() => setSelectedClass(disciplina)}
+                  />
+                </div>
+              ))
+            ) : (
+              <p>No hay disciplinas disponibles por ahora.</p>
+            )}
+          </div>
+        </div>
       </section>
 
       {/* 4. CONTACTO */}
       <section
+        id="contacto"
+        className="py-5"
+        style={{
+          background: "var(--surface)",
+        }}
+      >
+        <div className="container">
+          <div className="row g-5">
+            <div className="col-12 col-lg-4">
+              <h2
+                style={{
+                  fontFamily: "Playfair Display",
+                  fontSize: "40px",
+                  marginBottom: "20px",
+                }}
+              >
+                Contáctanos
+              </h2>
+
+              <p
+                style={{
+                  color: "var(--text-secondary)",
+                  marginBottom: "30px",
+                }}
+              >
+                ¿Tienes dudas? Déjanos un mensaje y te responderemos pronto.
+              </p>
+
+              <div style={{ marginBottom: "15px" }}>
+                📍 Calle Pilates #45, Col. Centro
+              </div>
+
+              <div style={{ marginBottom: "15px" }}>📞 +52 555 987 6543</div>
+
+              <div style={{ marginBottom: "15px" }}>
+                📧 hola@menteycuerpo.com
+              </div>
+            </div>
+
+            <div className="col-12 col-lg-8">
+              <div
+                style={{
+                  background: "var(--background)",
+                  padding: "40px",
+                  borderRadius: "30px",
+                }}
+              >
+                <div className="row g-3 mb-3">
+                  <div className="col-12 col-md-6">
+                    <input
+                      type="text"
+                      placeholder="Nombre"
+                      style={{
+                        border: "1px solid var(--border)",
+                        padding: "12px",
+                        borderRadius: "8px",
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+
+                  <div className="col-12 col-md-6">
+                    <input
+                      type="email"
+                      placeholder="Correo"
+                      style={{
+                        border: "1px solid var(--border)",
+                        padding: "12px",
+                        borderRadius: "8px",
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <textarea
+                  placeholder="¿En qué podemos ayudarte?"
+                  rows="5"
+                  style={{
+                    border: "1px solid #eee",
+                    marginBottom: "20px",
+                    width: "100%",
+                    padding: "12px",
+                    borderRadius: "8px",
+                  }}
+                />
+
+                <button
+                  className="btn-pill"
+                  style={{
+                    width: "100%",
+                  }}
+                >
+                  Enviar Mensaje
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* <section
         id="contacto"
         style={{ padding: "100px 50px", background: "var(--surface)" }}
       >
@@ -267,10 +489,11 @@ const Home = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 5. FOOTER */}
       <footer
+        className="py-5"
         style={{
           padding: "60px 50px",
           background: "var(--footer)",
@@ -441,7 +664,9 @@ const ClassCard = ({ img, title, desc, onOpen }) => (
     style={{
       background: "var(--surface)",
       borderRadius: "25px",
-      width: "320px",
+      // width: "320px",
+      width: "100%",
+      height: "100%",
       overflow: "hidden",
       boxShadow: "0 10px 25px rgba(0,0,0,0.03)",
       textAlign: "left",

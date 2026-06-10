@@ -57,12 +57,14 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AgendaAlumnos } from "./views/AgendaAlumnos";
 import { PlanesAlumnos } from "./views/PlanesAlumnos";
 import MisClases from "./views/MisClases";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // 1. Componente Navbar con la lógica de Scroll e Intersección corregida
 const NavbarPrincipal = () => {
@@ -70,6 +72,7 @@ const NavbarPrincipal = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("inicio");
   const isScrollingByClick = useRef(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const loginComoAdmin = () => {
     const usuarioDummy = {
@@ -193,14 +196,9 @@ const NavbarPrincipal = () => {
   //     isScrollingByClick.current = false;
   //   }, 1000);
   // };
-
   return (
     <nav
       style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "20px 50px",
         position: "sticky",
         top: 0,
         background: "rgba(250,248,246,0.96)",
@@ -211,74 +209,264 @@ const NavbarPrincipal = () => {
       }}
     >
       <div
-        onClick={() => handleNavClick("inicio", "scroll")}
-        style={{ cursor: "pointer" }}
-      >
-        <img
-          src="/img/I agree_logo-06.png"
-          // src="/img/I agree_logo-02.png"
-          alt="Logo"
-          style={{ height: "70px", width: "auto", objectFit: "contain" }}
-        />
-      </div>
-
-      <div
+        className="container"
         style={{
-          display: "flex",
-          gap: "35px",
-          fontSize: "14px",
-          fontWeight: "500",
+          minHeight: "90px",
+          alignContent: "center",
         }}
       >
-        {[
-          { name: "Inicio", id: "mis-clases", type: "nav" },
-          // { name: "Clases", id: "mis-clases", type: "nav" },
-          { name: "Membresía", id: "precios", type: "nav" },
-          { name: "Reservas", id: "reservar", type: "nav" },
-          { name: "Contacto", id: "contacto", type: "scroll" },
-        ].map((item) => {
-          const isActive =
-            item.type === "nav"
-              ? location.pathname === `/${item.id}`
-              : activeSection === item.id && location.pathname === "/";
-
-          return (
-            <span
-              key={item.id}
-              onClick={() => handleNavClick(item.id, item.type)}
+        <div className="d-flex justify-content-between align-items-center">
+          {/* LOGO */}
+          <div
+            onClick={() => handleNavClick("inicio", "scroll")}
+            style={{
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src="/img/I agree_logo-06.png"
+              alt="Logo"
               style={{
+                height: "70px",
+                width: "auto",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+
+          {/* MENÚ DESKTOP */}
+          <div className="d-none d-lg-flex align-items-center gap-4">
+            {[
+              { name: "Inicio", id: "mis-clases", type: "nav" },
+              { name: "Membresía", id: "precios", type: "nav" },
+              { name: "Reservas", id: "reservar", type: "nav" },
+              { name: "Contacto", id: "contacto", type: "scroll" },
+            ].map((item) => {
+              const isActive =
+                item.type === "nav"
+                  ? location.pathname === `/${item.id}`
+                  : activeSection === item.id && location.pathname === "/";
+
+              return (
+                <span
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id, item.type)}
+                  style={{
+                    cursor: "pointer",
+                    color: isActive
+                      ? "var(--primary)"
+                      : "var(--text-secondary)",
+                    fontWeight: isActive ? "600" : "500",
+                    paddingBottom: "6px",
+                    borderBottom: isActive
+                      ? "2px solid var(--primary)"
+                      : "2px solid transparent",
+                    transition: "all .3s ease",
+                  }}
+                >
+                  {item.name}
+                </span>
+              );
+            })}
+
+            <button
+              onClick={loginComoAdmin}
+              style={{
+                background: "var(--primary)",
+                color: "white",
+                border: "none",
+                padding: "10px 25px",
+                borderRadius: "50px",
                 cursor: "pointer",
-                color: isActive ? "var(--primary)" : "var(--text-secondary)",
-                fontWeight: isActive ? "600" : "500",
-                paddingBottom: "6px",
-                borderBottom: isActive
-                  ? "2px solid var(--primary)"
-                  : "2px solid transparent",
-                transition: "all 0.3s ease",
+                fontSize: "13px",
+                transition: ".3s",
               }}
             >
-              {item.name}
-            </span>
-          );
-        })}
-      </div>
+              Iniciar sesión
+            </button>
+          </div>
 
-      <button
-        onClick={loginComoAdmin}
-        style={{
-          background: "var(--primary)",
-          color: "white",
-          border: "none",
-          padding: "8px 25px",
-          borderRadius: "50px",
-          cursor: "pointer",
-          fontSize: "13px",
-        }}
-      >
-        Iniciar sesión
-      </button>
+          {/* HAMBURGUESA */}
+          <button
+            className="d-lg-none"
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              border: "none",
+              background: "transparent",
+              color: "var(--primary)",
+              fontSize: "26px",
+              cursor: "pointer",
+              padding: "8px",
+            }}
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+
+        {/* MENÚ MOBILE */}
+        <div
+          className={`d-lg-none overflow-hidden ${menuOpen ? "mt-3" : ""}`}
+          style={{
+            maxHeight: menuOpen ? "500px" : "0px",
+            opacity: menuOpen ? 1 : 0,
+            transition: "all .35s ease",
+          }}
+        >
+          <div
+            style={{
+              background: "var(--surface)",
+              borderRadius: "20px",
+              padding: "10px",
+              marginBottom: "15px",
+              boxShadow: "0 10px 30px rgba(0,0,0,.08)",
+            }}
+          >
+            {[
+              { name: "Inicio", id: "mis-clases", type: "nav" },
+              { name: "Membresía", id: "precios", type: "nav" },
+              { name: "Reservas", id: "reservar", type: "nav" },
+              { name: "Contacto", id: "contacto", type: "scroll" },
+            ].map((item) => {
+              const isActive =
+                item.type === "nav"
+                  ? location.pathname === `/${item.id}`
+                  : activeSection === item.id && location.pathname === "/";
+
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => {
+                    handleNavClick(item.id, item.type);
+                    setMenuOpen(false);
+                  }}
+                  style={{
+                    padding: "14px 18px",
+                    borderRadius: "12px",
+                    marginBottom: "5px",
+                    cursor: "pointer",
+                    background: isActive
+                      ? "rgba(190,156,125,.12)"
+                      : "transparent",
+                    color: isActive ? "var(--primary)" : "var(--text-primary)",
+                    fontWeight: isActive ? "600" : "500",
+                    transition: ".3s",
+                  }}
+                >
+                  {item.name}
+                </div>
+              );
+            })}
+
+            <button
+              onClick={() => {
+                loginComoAdmin();
+                setMenuOpen(false);
+              }}
+              style={{
+                width: "100%",
+                marginTop: "10px",
+                background: "var(--primary)",
+                color: "white",
+                border: "none",
+                padding: "14px",
+                borderRadius: "50px",
+                cursor: "pointer",
+                fontWeight: "600",
+              }}
+            >
+              Iniciar sesión
+            </button>
+          </div>
+        </div>
+      </div>
     </nav>
   );
+
+  // return (
+  //   <nav
+  //     style={{
+  //       display: "flex",
+  //       justifyContent: "space-between",
+  //       alignItems: "center",
+  //       padding: "20px 50px",
+  //       position: "sticky",
+  //       top: 0,
+  //       background: "rgba(250,248,246,0.96)",
+  //       backdropFilter: "blur(14px)",
+  //       borderBottom: "2px solid var(--primary)",
+  //       boxShadow: "0 4px 25px rgba(0,0,0,0.05)",
+  //       zIndex: 1000,
+  //     }}
+  //   >
+  //     <div
+  //       onClick={() => handleNavClick("inicio", "scroll")}
+  //       style={{ cursor: "pointer" }}
+  //     >
+  //       <img
+  //         src="/img/I agree_logo-06.png"
+  //         // src="/img/I agree_logo-02.png"
+  //         alt="Logo"
+  //         style={{ height: "70px", width: "auto", objectFit: "contain" }}
+  //       />
+  //     </div>
+
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         gap: "35px",
+  //         fontSize: "14px",
+  //         fontWeight: "500",
+  //       }}
+  //     >
+  //       {[
+  //         { name: "Inicio", id: "mis-clases", type: "nav" },
+  //         // { name: "Clases", id: "mis-clases", type: "nav" },
+  //         { name: "Membresía", id: "precios", type: "nav" },
+  //         { name: "Reservas", id: "reservar", type: "nav" },
+  //         { name: "Contacto", id: "contacto", type: "scroll" },
+  //       ].map((item) => {
+  //         const isActive =
+  //           item.type === "nav"
+  //             ? location.pathname === `/${item.id}`
+  //             : activeSection === item.id && location.pathname === "/";
+
+  //         return (
+  //           <span
+  //             key={item.id}
+  //             onClick={() => handleNavClick(item.id, item.type)}
+  //             style={{
+  //               cursor: "pointer",
+  //               color: isActive ? "var(--primary)" : "var(--text-secondary)",
+  //               fontWeight: isActive ? "600" : "500",
+  //               paddingBottom: "6px",
+  //               borderBottom: isActive
+  //                 ? "2px solid var(--primary)"
+  //                 : "2px solid transparent",
+  //               transition: "all 0.3s ease",
+  //             }}
+  //           >
+  //             {item.name}
+  //           </span>
+  //         );
+  //       })}
+  //     </div>
+
+  //     <button
+  //       onClick={loginComoAdmin}
+  //       style={{
+  //         background: "var(--primary)",
+  //         color: "white",
+  //         border: "none",
+  //         padding: "8px 25px",
+  //         borderRadius: "50px",
+  //         cursor: "pointer",
+  //         fontSize: "13px",
+  //       }}
+  //     >
+  //       Iniciar sesión
+  //     </button>
+  //   </nav>
+  // );
 };
 
 // Componente intermedio para aplicar la lógica sin romper hooks
